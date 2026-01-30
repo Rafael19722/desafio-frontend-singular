@@ -3,6 +3,7 @@ import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 
 import { Header } from "@/components/Header";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${inter.variable} ${monstserrat.variable} antialiased`}>
         <Header />
+        <Toaster />
         {children}
       </body>
     </html>
