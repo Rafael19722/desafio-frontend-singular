@@ -37,3 +37,13 @@ h1, h2, h3, h4, h5, h6 {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@layer components {
+  .footer-icon {
+    @apply w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors text-white;
+  }
+
+  .footer-link {
+    @apply text-gray-400 hover:text-primary transition-colors;
+  }
+}
