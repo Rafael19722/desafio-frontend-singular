@@ -27,13 +27,17 @@ const TESTIMONIALS = [
 
 export function Quotes() {
     const [current, setCurrent] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
     useEffect(() => {
+        if (isPaused) return;
+
         const timer = setInterval(() => {
             setCurrent((prev) => (prev + 1) % TESTIMONIALS.length);
         }, 5000);
+
         return () => clearInterval(timer);
-    }, []);
+    }, [current, isPaused]);
 
     return (
         <section className="relative bg-gray-50 py-24 px-8 md:px-[295.5px] w-full overflow-hidden">
@@ -42,7 +46,11 @@ export function Quotes() {
                 <Quote size={200} />
             </div>
 
-            <div className="max-w-[864px] mx-auto flex flex-col items-center relative z-10">
+            <div 
+                className="max-w-[864px] mx-auto flex flex-col items-center relative z-10"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+            >
                 
                 <div className="pb-8">
                     <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/30">
