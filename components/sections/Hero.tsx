@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,16 +26,31 @@ const SLIDES = [
 
 export function Hero() {
   const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const nextSlide = () => setCurrent((prev) => (prev + 1) % SLIDES.length);
   const prevSlide = () => setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
 
   const slide = SLIDES[current];
 
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [current, isPaused]);
+
   return (
-    <section className="relative w-full h-[692px] flex items-center bg-black overflow-hidden group">
+    <section 
+      className="relative w-full h-[692px] flex items-center bg-black overflow-hidden group"             
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}  
+    >
       
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         <motion.div
           key={slide.id} 
           initial={{ opacity: 0 }}
