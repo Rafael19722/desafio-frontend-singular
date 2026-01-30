@@ -63,18 +63,17 @@ export function Quotes() {
                             <p className="font-sans font-light italic text-2xl md:text-4xl leading-tight text-dark">
                                 "{TESTIMONIALS[current].text}"
                             </p>
+                            <div className="flex flex-col items-center gap-1">
+                                <h4 className="font-bold text-xl tracking-[2px] text-dark uppercase">
+                                    {TESTIMONIALS[current].author}
+                                </h4>
+
+                                <span className="font-semibold text-sm text-gray-500">
+                                    {TESTIMONIALS[current].role}
+                                </span>
+                            </div>
                         </motion.div>
                     </AnimatePresence>
-                </div>
-
-                <div className="flex flex-col items-center gap-1">
-                    <h4 className="font-bold text-xl tracking-[2px] text-dark uppercase">
-                        {TESTIMONIALS[current].author}
-                    </h4>
-
-                    <span className="font-semibold text-sm text-gray-500">
-                        {TESTIMONIALS[current].role}
-                    </span>
                 </div>
 
                 <div className="pt-12 flex gap-2">
