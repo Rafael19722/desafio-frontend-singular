@@ -5,29 +5,49 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
- 
-const SLIDES = [
-  {
-    id: 1,
-    image: "/images/hero-image.png",
-    tag: "FARMÁCIA",
-    title: <>QUALIDADE <br /> GARANTIDA</>,
-    description: "Insumos selecionados e processos rigorosos para sua segurança.",
-    buttonText: "CONTATAR",
-  },
-  {
-    id: 2,
-    image: "/images/hero-image-2.jpg", 
-    tag: "FARMÁCIA",
-    title: <>FORMULAÇÕES <br /> ÚNICAS</>,
-    description: "Criamos medicamentos personalizados adaptados às necessidades de cada paciente.",
-    buttonText: "Nossos Serviços",
-  }
-];
 
-export function Hero() {
+interface HeroProps {
+  dict: {
+    first_slide: {
+        tag: string
+        title_1: string
+        title_2: string
+        description: string
+        buttonText: string
+    },
+    second_slide: {
+        tag: string
+        title: string
+        description: string
+        buttonText: string
+    }
+  }
+}
+
+
+
+export function Hero({ dict }: HeroProps) {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+
+  const SLIDES = [
+    {
+      id: 1,
+      image: "/images/hero-image.png",
+      tag: dict.first_slide.tag,
+      title: <>{dict.first_slide.title_1} <br /> {dict.first_slide.title_2}</>,
+      description: dict.first_slide.description,
+      buttonText: dict.first_slide.buttonText,
+    },
+    {
+      id: 2,
+      image: "/images/hero-image-2.jpg", 
+      tag: dict.second_slide.tag,
+      title: <>{dict.second_slide.title_1} <br /> {dict.second_slide.title_2}</>,
+      description: dict.second_slide.description,
+      buttonText: dict.second_slide.buttonText,
+    }
+  ];
 
   const nextSlide = () => setCurrent((prev) => (prev + 1) % SLIDES.length);
   const prevSlide = () => setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);

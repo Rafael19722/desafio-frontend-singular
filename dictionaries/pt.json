@@ -6,7 +6,8 @@
     "hero": {
         "first_slide": {
             "tag": "FARMÁCIA",
-            "title": "Qualidade Garantida",
+            "title_1": "Qualidade",
+            "title_2": "Garantida",
             "description": "Insumos selecionados e processos rigorosos para sua segurança.",
             "buttonText": "Contatar"
         },

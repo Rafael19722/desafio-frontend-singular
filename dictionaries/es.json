@@ -6,13 +6,15 @@
     "hero": {
         "first_slide": {
             "tag": "FARMACIA",
-            "title": "CALIDAD GARANTIZADA",
+            "title_1": "CALIDAD",
+            "title_2": "GARANTIZADA",
             "description": "Insumos seleccionados y procesos rigurosos para su seguridad.",
             "buttonText": "Contactar"
         },
         "second_slide": {
             "tag": "FARMACIA",
-            "title": "FORMULACIONES ÚNICAS",
+            "title_1": "FORMULACIONES",
+            "title_2": "ÚNICAS",
             "description": "Creamos medicamentos personalizados adaptados a las necesidades de cada paciente.",
             "buttonText": "Nuestros Servicios"
         }
