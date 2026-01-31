@@ -158,7 +158,7 @@ export function BudgetForm() {
                                 <Button
                                     type="submit"
                                     disabled={loading}
-                                    className="h-14 w-full rounded-2xl bg-primary hover:bg-primary-dark text-white font-bold text-lg gap-3 mt-2"
+                                    className="h-14 w-full rounded-2xl bg-primary hover:bg-primary-dark text-white font-bold text-lg gap-3 mt-2 uppercase"
                                 >
                                     {loading ? "Enviando..." : (
                                         <>

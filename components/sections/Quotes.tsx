@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Quote } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 const TESTIMONIALS = [
     {
@@ -86,8 +87,10 @@ export function Quotes() {
 
                 <div className="pt-12 flex gap-2">
                     {TESTIMONIALS.map((_, index) => (
-                        <button 
+                        <Button 
                             key={index}
+                            variant="pagination"
+                            size="clear"
                             onClick={() => setCurrent(index)}
                             className={`h-1 rounded-b-full transition-all duration-300 ${
                                 index === current

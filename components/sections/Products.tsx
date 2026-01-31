@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const PRODUCT_LIST = [
     {
@@ -47,10 +48,10 @@ export function Products() {
                     </h2>
                 </div>
 
-                <button className="group flex items-center gap-2 text-dark hover:text-primary transition-colors pb-2">
+                <Button variant="ghost" className="group flex items-center gap-2 text-dark hover:text-primary transition-colors pb-2">
                     <span className="font-semibold text-base">Ver todos os produtos</span>
                     <ArrowRight size={20} className="text-primary transition-transform group-hover:translate-x-1" />
-                </button>
+                </Button>
 
             </div>
 

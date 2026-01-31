@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Globe } from "lucide-react";
+import { Globe, ClipboardList } from "lucide-react";
 
 export function Header() {
     const [isScolled, setIsScrolled] = useState(false);
@@ -26,13 +26,14 @@ export function Header() {
                 </Link>
 
                 <div className="flex items-center gap-4">
-                    <button className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary transition-colors">
+                    <Button variant="ghost" className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary transition-colors">
                         <Globe size={18} />
                         <span className="hidden sm:inline">PT / ES</span>
-                    </button>
-                    <button className="bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-full transition-colors shadow-lg shadow-primary/30">
+                    </Button>
+                    <Button className="bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-full transition-colors shadow-lg shadow-primary/30 gap-2 uppercase">
+                        <ClipboardList size={24} />
                         Solicitar Orçamento
-                    </button>
+                    </Button>
                 </div>
             </div>
         </header>
