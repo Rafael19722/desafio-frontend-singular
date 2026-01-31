@@ -92,13 +92,15 @@
         "form": {
             "title": "Datos del Pedido",
             "name": "Nombre Completo",
+            "name_placeholder": "Su nombre",
             "phone": "WhatsApp / Celular",
             "email": "E-mail",
+            "email_placeholder": "su@email.com",
             "upload_title": "Adjuntar Recetas",
             "upload_desc": "Agregar recetas médicas",
             "upload_info": "JPG, PNG o PDF (Máx. 10MB por archivo)",
             "obs": "Observaciones",
-            "obs_placeholder": "Introduzca cualquier comentario...",
+            "obs_placeholder": "Introduzca un comentario...",
             "submit": "SOLICITAR COTIZACIÓN",
             "submit_short": "SOLICITAR",
             "sending": "Envío..."
@@ -109,7 +111,12 @@
             "phone": "WhatsApp Central",
             "email": "Consultas Técnicas",
             "footer_text": "Comprometidos con la ética farmacéutica y la salud de nuestros pacientes."
-        }
+        },
+        "toast": {
+            "console": "Envío:",
+            "sucess": "Cotización solicitado!",
+            "description": "Nuestro equipo se pondrá en contacto contigo pronto."
+        }        
     },
     "footer": {
         "description": "Excelencia en compuestos magistrales y cuidado personalizado de la salud desde hace más de 20 años.",

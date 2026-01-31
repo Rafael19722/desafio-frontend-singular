@@ -91,8 +91,10 @@
         "form": {
             "title": "Dados do pedido",
             "name": "Nome Completo",
+            "name_placeholder": "Seu nome",
             "phone": "WhatsApp / Celular",
             "email": "E-mail",
+            "email_placeholder": "seu@email.com",
             "upload_title": "Anexar Receitas",
             "upload_desc": "Adicionar receitas médicas",
             "upload_info": "JPG, PNG ou PDF (Máx. 10mb)",
@@ -108,6 +110,11 @@
             "phone": "WhatsApp Central",
             "email": "Consultas Técnicas",
             "footer_text": "Comprometidos com a ética farmacêutica e a saúde de nossos pacientes."
+        },
+        "toast": {
+            "console": "Enviando:",
+            "sucess": "Orçamento solicitado!",
+            "description": "Nossa equipe entrará em contato em breve."
         }
     },
     "footer": {
