@@ -49,7 +49,12 @@ interface BudgetFormProps {
             phone: string
             email: string
             footer_text: string
-        }    
+        },
+        toast: {
+            console: string
+            sucess: string
+            description: string         
+        }
     }
 }
 
