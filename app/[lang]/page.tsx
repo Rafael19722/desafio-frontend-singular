@@ -29,7 +29,7 @@ export default async function Home( {
       <Products dict={dict.products}/>
       <Quotes dict={dict.quotes}/>
       <BudgetForm dict={dict.budget}/>
-      <Footer />
+      <Footer dict={dict.footer}/>
     </main>
   );
 }

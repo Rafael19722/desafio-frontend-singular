@@ -100,7 +100,7 @@
             "upload_desc": "Agregar recetas médicas",
             "upload_info": "JPG, PNG o PDF (Máx. 10MB por archivo)",
             "obs": "Observaciones",
-            "obs_placeholder": "Introduzca un comentario...",
+            "obs_placeholder": "Introduzca una observacion...",
             "submit": "SOLICITAR COTIZACIÓN",
             "submit_short": "SOLICITAR",
             "sending": "Envío..."

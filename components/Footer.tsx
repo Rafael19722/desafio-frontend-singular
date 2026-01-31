@@ -1,7 +1,24 @@
 import Link from "next/link";
 import { Instagram, Facebook, Twitter } from "lucide-react";
 
-export function Footer() {
+interface FooterProps {
+    dict: {
+        description: string
+        links: {
+            links_title: string
+            link_1: string
+            link_2: string
+            link_3: string
+            link_4: string
+            
+        },
+        copyright: string
+        privacy: string
+        terms: string   
+    }
+}
+
+export function Footer( { dict }: FooterProps) {
     return (
         <footer className="bg-gray-900 text-white pt-20 pb-10 px-8 md:px-[87.5px]">
             
@@ -17,7 +34,7 @@ export function Footer() {
                         </Link>
 
                         <p className="font-sans font-normal text-base leading-[26px] text-gray-400 max-w-md">
-                            Excelência em compostos magistrais e cuidado personalizado da saúde há mais de 20 anos.
+                            {dict.description}
                         </p>
 
                         <div className="flex items-center gap-4 mt-2">
@@ -37,20 +54,20 @@ export function Footer() {
 
                         <div className="flex flex-col gap-6">
 
-                            <h4 className="font-bold text-lg text-white">Institucional</h4>
+                            <h4 className="font-bold text-lg text-white">{dict.links.links_title}</h4>
 
                             <ul className="flex flex-col gap-4">
                                 <li>
-                                    <Link href="#" className="footer-link">Nosso DNA</Link>
+                                    <Link href="#" className="footer-link">{dict.links.link_1}</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="footer-link">Produtos</Link>
+                                    <Link href="#" className="footer-link">{dict.links.link_2}</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="footer-link">Pedidos</Link>
+                                    <Link href="#" className="footer-link">{dict.links.link_3}</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="footer-link">Laboratórios</Link>
+                                    <Link href="#" className="footer-link">{dict.links.link_4}</Link>
                                 </li>
                             </ul>
 
@@ -61,10 +78,10 @@ export function Footer() {
                 </div>
 
                 <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-                    <p>FARMÁCIA 2026 © Todos os direitos reservados.</p>
+                    <p>{dict.copyright}</p>
                     <div className="flex gap-6 mt-4 md:mt-0">
-                        <Link href="#" className="hover:text-white">Política de Privacidade</Link>
-                        <Link href="#" className="hover:text-white">Termos de Serviço</Link>
+                        <Link href="#" className="hover:text-white">{dict.privacy}</Link>
+                        <Link href="#" className="hover:text-white">{dict.terms}</Link>
                     </div>
                 </div>
 
