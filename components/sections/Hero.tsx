@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
  
 const SLIDES = [
   {
@@ -26,16 +27,31 @@ const SLIDES = [
 
 export function Hero() {
   const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const nextSlide = () => setCurrent((prev) => (prev + 1) % SLIDES.length);
   const prevSlide = () => setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
 
   const slide = SLIDES[current];
 
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [current, isPaused]);
+
   return (
-    <section className="relative w-full h-[692px] flex items-center bg-black overflow-hidden group">
+    <section 
+      className="relative w-full h-[692px] flex items-center bg-black overflow-hidden group"             
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}  
+    >
       
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         <motion.div
           key={slide.id} 
           initial={{ opacity: 0 }}
@@ -51,6 +67,7 @@ export function Hero() {
               fill
               className="object-cover object-center"
               priority
+              sizes="100vw"
             />
           </div>
 
@@ -90,33 +107,39 @@ export function Hero() {
             </div>
 
             <div className="mb-[112px]">
-                <button className="bg-primary hover:bg-primary-dark text-white font-bold text-base uppercase rounded-full px-8 py-4 transition-all shadow-lg hover:scale-105">
+                <Button className="bg-primary hover:bg-primary-dark text-white font-bold text-base uppercase rounded-full px-8 py-4 transition-all shadow-lg hover:scale-105 h-14">
                     {slide.buttonText}
-                </button>
+                </Button>
             </div>
           </motion.div>
         </AnimatePresence>
 
       </div>
 
-      <button 
+      <Button 
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-16 h-16 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all"
+        variant="heroArrow"
+        size="hero"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30"
       >
         <ChevronLeft size={48} strokeWidth={1.5} />
-      </button>
+      </Button>
 
-      <button 
+      <Button 
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-16 h-16 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all"
+        variant="heroArrow"
+        size="hero"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30"
       >
         <ChevronRight size={48} strokeWidth={1.5} />
-      </button>
+      </Button>
 
       <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-30 flex gap-3">
         {SLIDES.map((item, index) => (
-          <button
+          <Button
             key={item.id}
+            variant="pagination"
+            size="clear"
             onClick={() => setCurrent(index)}
             className={`h-1 rounded-full transition-all duration-300 ${
               index === current ? "w-12 bg-primary" : "w-6 bg-gray-600 hover:bg-gray-400"

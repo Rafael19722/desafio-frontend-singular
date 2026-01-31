@@ -158,11 +158,12 @@ export function BudgetForm() {
                                 <Button
                                     type="submit"
                                     disabled={loading}
-                                    className="h-14 w-full rounded-2xl bg-primary hover:bg-primary-dark text-white font-bold text-lg gap-3 mt-2"
+                                    className="h-12 md:h-14 w-full rounded-2xl bg-primary hover:bg-primary-dark text-white font-bold text-sm md:text-lg gap-2 md:gap-3 mt-2 uppercase transition-all"
                                 >
                                     {loading ? "Enviando..." : (
                                         <>
-                                            Solicitar Orçamento
+                                            <span className="hidden md:inline">Solicitar Orçamento</span>
+                                            <span className="md:hidden">Solicitar</span>
                                             <Send size={20} />
                                         </>
                                     )}
@@ -174,7 +175,7 @@ export function BudgetForm() {
                     <div className="w-full lg:w-1/2 relative bg-gray-900 text-white p-8 md:p-16 flex flex-col justify-between">
                         
                         <div className="absolute inset-0 z-0 opacity-100">
-                            <Image src="/images/bg-budget.png" alt="cartelas de remédio" fill className="object-cover" />
+                            <Image src="/images/bg-budget.png" alt="cartelas de remédio" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw"/>
                         </div>
 
                         <div className="relative z-10 h-full flex flex-col justify-center items-center text-left">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const PRODUCT_LIST = [
     {
@@ -36,7 +37,7 @@ export function Products() {
     return (
         <section className="bg-white py-24 w-full flex-col gap-12 overflow-hidden">
             
-            <div className="w-full max-w-[1280px] mx-auto mb-[48px] px-8 flex flex-col md:flex-row items-end justify-between gap-8">
+            <div className="w-full max-w-[1280px] mx-auto mb-[48px] px-8 flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
                 
                 <div className="flex flex-col gap-2.5">
                     <span className="font-bold text-sm tracking-[0.1em] text-primary uppercase">
@@ -47,10 +48,10 @@ export function Products() {
                     </h2>
                 </div>
 
-                <button className="group flex items-center gap-2 text-dark hover:text-primary transition-colors pb-2">
+                <Button variant="ghost" className="group flex items-center gap-2 text-dark hover:text-primary transition-colors pb-2">
                     <span className="font-semibold text-base">Ver todos os produtos</span>
                     <ArrowRight size={20} className="text-primary transition-transform group-hover:translate-x-1" />
-                </button>
+                </Button>
 
             </div>
 
@@ -64,7 +65,7 @@ export function Products() {
                         >
                             <div className="relative w-full h-[450px] bg-gray-200 overflow-hidden">
                                 <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                                    <Image src={product.image} alt="Remédios mais vendidos" fill className="object-cover" />
+                                    <Image src={product.image} alt="Remédios mais vendidos" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"/>
                                 </div>
                             </div>
                             <div className="h-[185px] p-8 pt-[37px] flex flex-col gap-2.5">

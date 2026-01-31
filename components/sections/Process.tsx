@@ -49,7 +49,7 @@ export function Process() {
                 <div className="w-full md:w-[576px] h-[324px] relative group cursor-pointer">
                         <div className="relative w-full h-full rounded-[24px] overflow-hidden border border-gray-200 shadow-xl bg-gray-100">
                             <div className="absolute inset-0 bg-gray-300">
-                                <Image src="/images/video-example.png" alt="Vídeo Institucional" fill className="object-cover" />
+                                <Image src="/images/video-example.png" alt="Vídeo Institucional" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" priority/>
                             </div>
 
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transotion-all" />

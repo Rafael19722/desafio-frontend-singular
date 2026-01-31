@@ -46,4 +46,8 @@ h1, h2, h3, h4, h5, h6 {
   .footer-link {
     @apply text-gray-400 hover:text-primary transition-colors;
   }
+
+  .hero-arrow-icon {
+    @apply w-12 h-12 flex items-center justify-center;
+  }
 }
