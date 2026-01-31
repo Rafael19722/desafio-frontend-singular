@@ -21,34 +21,41 @@ import {
 import { toast } from "sonner";
 
 interface BudgetFormProps {
-    subtitle: string
-    title: string
-    description: string
-    form: {
+    dict: {
+        subtitle: string
         title: string
-        name: string
-        name_placeholder: string
-        phone: string
-        email: string
-        email_placeholder: string
-        upload_title: string
-        upload_desc: string
-        upload_info: string
-        upload_change: string
-        upload_file: string
-        obs: string
-        obs_placeholder: string
-        submit: string
-        submit_short: string
-        sending: string
-    },
-    contact: {
-        title: string
-        location: string
-        phone: string
-        email: string
-        footer_text: string
-    }    
+        description: string
+        form: {
+            title: string
+            name: string
+            name_placeholder: string
+            phone: string
+            email: string
+            email_placeholder: string
+            upload_title: string
+            upload_desc: string
+            upload_info: string
+            upload_change: string
+            upload_file: string
+            obs: string
+            obs_placeholder: string
+            submit: string
+            submit_short: string
+            sending: string
+        },
+        contact: {
+            title: string
+            location: string
+            phone: string
+            email: string
+            footer_text: string
+        },
+        toast: {
+            console: string
+            sucess: string
+            description: string         
+        }
+    }
 }
 
 const formSchema = z.object({
@@ -97,15 +104,15 @@ export function BudgetForm({ dict }: BudgetFormProps) {
     };
 
     const removeFile = (indexToRemove: number) => {
-        const currentFiles = form.getValues("files");
+        const currentFiles = form.getValues("files") as FileList | null;
         if (!currentFiles) return;
 
         const dt = new DataTransfer();
-        Array.from(currentFiles).forEach((file, i) => {
+        Array.from(currentFiles).forEach((file: File, i) => {
             if (i !== indexToRemove) dt.items.add(file);
         });
 
-        form.setValue("files", dt.files);
+        form.setValue("files", dt.items.length > 0 ? dt.files : null);
     };
 
     return (

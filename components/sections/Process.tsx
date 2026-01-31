@@ -2,16 +2,18 @@ import Image from "next/image";
 import { Check, Play } from "lucide-react";
 
 interface ProcessProps {
-    subtitle: string
-    title: string
-    description: string
-    video_btn: string
-    list: {
-        item_1: string
-        item_2: string
-        item_3: string
-        item_4: string
-    }   
+    dict: {
+        subtitle: string
+        title: string
+        description: string
+        video_btn: string
+        list: {
+            item_1: string
+            item_2: string
+            item_3: string
+            item_4: string
+        }   
+    }
 }
 
 export function Process({ dict }: ProcessProps) {
