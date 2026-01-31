@@ -13,7 +13,8 @@
         },
         "second_slide": {
             "tag": "FARMÁCIA",
-            "title": "Formulações Únicas",
+            "title_1": "Formulações",
+            "title_2": "Únicas",
             "description": "Criamos medicamentos personalizados adaptados às necessidades de cada paciente.",
             "buttonText": "Nossos Serviços"
         }
