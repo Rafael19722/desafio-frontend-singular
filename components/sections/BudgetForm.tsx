@@ -21,34 +21,36 @@ import {
 import { toast } from "sonner";
 
 interface BudgetFormProps {
-    subtitle: string
-    title: string
-    description: string
-    form: {
+    dict: {
+        subtitle: string
         title: string
-        name: string
-        name_placeholder: string
-        phone: string
-        email: string
-        email_placeholder: string
-        upload_title: string
-        upload_desc: string
-        upload_info: string
-        upload_change: string
-        upload_file: string
-        obs: string
-        obs_placeholder: string
-        submit: string
-        submit_short: string
-        sending: string
-    },
-    contact: {
-        title: string
-        location: string
-        phone: string
-        email: string
-        footer_text: string
-    }    
+        description: string
+        form: {
+            title: string
+            name: string
+            name_placeholder: string
+            phone: string
+            email: string
+            email_placeholder: string
+            upload_title: string
+            upload_desc: string
+            upload_info: string
+            upload_change: string
+            upload_file: string
+            obs: string
+            obs_placeholder: string
+            submit: string
+            submit_short: string
+            sending: string
+        },
+        contact: {
+            title: string
+            location: string
+            phone: string
+            email: string
+            footer_text: string
+        }    
+    }
 }
 
 const formSchema = z.object({
