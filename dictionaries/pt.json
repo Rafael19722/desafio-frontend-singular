@@ -1,0 +1,134 @@
+{
+    "header": {
+        "budget": "Solicitar Orçamento",
+        "budget_short": "Orçamento"
+    },
+    "hero": {
+        "first_slide": {
+            "tag": "FARMÁCIA",
+            "title_1": "Qualidade",
+            "title_2": "Garantida",
+            "description": "Insumos selecionados e processos rigorosos para sua segurança.",
+            "buttonText": "Contatar"
+        },
+        "second_slide": {
+            "tag": "FARMÁCIA",
+            "title": "Formulações Únicas",
+            "description": "Criamos medicamentos personalizados adaptados às necessidades de cada paciente.",
+            "buttonText": "Nossos Serviços"
+        }
+    },
+    "about": {
+        "welcome": "Bem vindos",
+        "title": "A saúde como prioridade",
+        "subtitle": "Sobre nós",
+        "title_2": "Acreditamos na busca constante pela evolução.",
+        "description": "Seu desejo de crescer e desenvolver-se é o motor que nos impulsiona. Na Farmácia, estamos aqui para acompanhá-lo nesta jornada.",
+        "values": {
+            "ethics": "Ética",
+            "science": "Ciência",
+            "care": "Cuidado"
+        }
+    },
+    "process": {
+        "subtitle": "Nosso processo",
+        "title": "Precisão em cada tratamento",
+        "description": "Descubra como transformamos insumos de alta pureza em soluções magistrais personalizadas. Nosso laboratório utiliza tecnologia de ponta.",
+        "video_btn": "Ver vídeo institucional",
+        "list": {
+            "item_1": "Matérias-prima certificadas",
+            "item_2": "Laboratórios de alta complexidade",
+            "item_3": "Controle de qualidade rigoroso",
+            "item_4": "Prescrição personalizada"
+        }
+    },
+    "products": {
+        "subtitle": "Produtos",
+        "title": "Os mais pedidos",
+        "view_all": "Ver todos os produtos",
+        "product_1": {
+            "category": "Imunidade",
+            "name": "Wellmunep",
+            "description": "Reforço imunológico de alta absorção para o dia a dia."
+        },
+        "product_2": {
+            "category": "Digestão",
+            "name": "AdiDAO",
+            "description": "Enzima específica para a degradação eficiente de histamina."
+        },
+        "product_3": {
+            "category": "Enzimas",
+            "name": "Fórmulas Magistrais",
+            "description": "Sua prescrição médica tornada realidade com precisão exata."
+        },
+        "product_4": {
+            "category": "Personalizado",
+            "name": "Suplementos Esportivos",
+            "description": "Otimização do rendimento físico personalizada."
+        }
+    },
+    "quotes": {
+        "quote_1": {
+            "text": "Não há beleza perfeita que não contenha alguma singularidade em suas proporções.",
+            "author": "FRANCIS BACON",
+            "role": "Filósofo"
+        },
+        "quote_2": {
+            "text": "A saúde é o resultado não só de nossos atos como também de nossos pensamentos.",
+            "author": "MAHATMA GANDHI",
+            "role": "Líder Pacifista"
+        },
+        "quote_3": {
+            "text": "A arte da medicina consiste em distrair o paciente enquanto a natureza cura a doença.",
+            "author": "VOLTAIRE",
+            "role": "Escritor"
+        }
+    },
+    "budget": {
+        "subtitle": "Orçamento Online",
+        "title": "Solicitar Orçamento",
+        "description": "Envie-nos suas receitas (pode anexar várias) ou consulta e nossa equipe farmacêutica responderá.",
+        "form": {
+            "title": "Dados do pedido",
+            "name": "Nome Completo",
+            "name_placeholder": "Seu nome",
+            "phone": "WhatsApp / Celular",
+            "email": "E-mail",
+            "email_placeholder": "seu@email.com",
+            "upload_title": "Anexar Receitas",
+            "upload_desc": "Adicionar receitas médicas",
+            "upload_info": "JPG, PNG ou PDF (Máx. 10mb)",
+            "obs": "Observações",
+            "obs_placeholder": "Digite alguma observação...",
+            "submit": "Solicitar Orçamento",
+            "submit_short": "Solicitar",
+            "sending": "Enviando..."
+        },
+        "contact": {
+            "title": "Canais de Atendimento",
+            "location": "Localização",
+            "phone": "WhatsApp Central",
+            "email": "Consultas Técnicas",
+            "footer_text": "Comprometidos com a ética farmacêutica e a saúde de nossos pacientes."
+        },
+        "toast": {
+            "console": "Enviando:",
+            "sucess": "Orçamento solicitado!",
+            "description": "Nossa equipe entrará em contato em breve."
+        }
+    },
+    "footer": {
+        "description": "Excelência em compostos magistrais e cuidado personalizado da saúde há mais de 20 anos.",
+        "links": {
+            "links_title": "Links Rápidos",
+            "link_1": "Nosso DNA",
+            "link_2": "Produtos",
+            "link_3": "Pedidos",
+            "link_4": "Laboratórios"
+            
+        },
+        "copyright": "FARMÁCIA 2026 © Todos os direitos reservados.",
+        "privacy": "Política de Privacidade",
+        "terms": "Termos de Serviço"
+    }
+}

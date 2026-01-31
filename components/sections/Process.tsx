@@ -1,15 +1,28 @@
 import Image from "next/image";
 import { Check, Play } from "lucide-react";
 
+interface ProcessProps {
+    subtitle: string
+    title: string
+    description: string
+    video_btn: string
+    list: {
+        item_1: string
+        item_2: string
+        item_3: string
+        item_4: string
+    }   
+}
 
-const BENEFITS = [
-    "Matérias-prima certificadas",
-    "Laboratórios de alta complexidade",
-    "Controle de qualidade rigoroso",
-    "Prescrição personalizada"
-];
+export function Process({ dict }: ProcessProps) {
 
-export function Process() {
+    const BENEFITS = [
+        dict.list.item_1,
+        dict.list.item_2,
+        dict.list.item_3,
+        dict.list.item_4
+    ];
+
     return (
         <section className="relative bg-dark py-24 px-8 md:px-[119.5px] w-full overflow-hidden z-0">
 
@@ -19,18 +32,16 @@ export function Process() {
                 
                 <div className="w-full md:w-[576px] flex flex-col gap-[17.5px]">
                     <span className="font-bold text-sm tracking-[0.1em] text-primary uppercase">
-                        Nosso processo
+                        {dict.subtitle}
                     </span>
 
                     <h2 className="font-heading font-bold text-6xl md:text-5x1 text-white leading-tight">
-                        Precisão em cada tratamento
+                        {dict.title}
                     </h2>
 
                     <div className="pt-[14.5px]">
                         <p className="font-sans font-normal text-xl leading-[29.25px] text-gray-400">
-                            Descubra como transformamos insumos de alta pureza em
-                            soluções magistrais personalizadas. Nosso laboratório utiliza
-                            tecnologia de ponta.
+                            {dict.description}
                         </p>
                     </div>
 
@@ -59,7 +70,7 @@ export function Process() {
                             </div>
                             <div className="absolute bottom-6 left-6 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-lg shadow-sm">
                                 <span className="font-normal text-sm text-white">
-                                    Ver vídeo Institucional
+                                    {dict.video_btn}
                                 </span>
                             </div>
                         </div>

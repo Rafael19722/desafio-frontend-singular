@@ -19,6 +19,35 @@ import {
 } from "@/components/ui/form";
 import { toast } from "sonner";
 
+interface BudgetFormProps {
+    subtitle: string
+    title: string
+    description: string
+    form: {
+        title: string
+        name: string
+        name_placeholder: string
+        phone: string
+        email: string
+        email_placeholder: string
+        upload_title: string
+        upload_desc: string
+        upload_info: string
+        obs: string
+        obs_placeholder: string
+        submit: string
+        submit_short: string
+        sending: string
+    },
+    contact: {
+        title: string
+        location: string
+        phone: string
+        email: string
+        footer_text: string
+    }    
+}
+
 const formSchema = z.object({
     name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres."),
     phone: z.string().min(10, "Telefone inválido."),
@@ -27,7 +56,7 @@ const formSchema = z.object({
     files: z.any().optional(),
 });
 
-export function BudgetForm() {
+export function BudgetForm({ dict }: BudgetFormProps) {
     const [loading, setLoading] = useState(false);
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -42,12 +71,12 @@ export function BudgetForm() {
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         setLoading(true);
-        console.log("Enviando:", values);
+        console.log(dict.toast.console, values);
 
         setTimeout(() => {
             setLoading(false);
-            toast.success("Orçamento solicitado!", {
-                description: "Nossa equipe entrará em contato em breve.",
+            toast.success(dict.toast.sucess, {
+                description: dict.toast.description,
             });
             form.reset();
         }, 2000);
@@ -60,13 +89,13 @@ export function BudgetForm() {
 
                 <div className="flex flex-col items-center gap-2 text-center max-w-[672px] mx-auto">
                     <span className="font-bold text-sm tracking-[1.4px] text-primary uppercase">
-                        Orçamento Online
+                        {dict.subtitle}
                     </span>
                     <h2 className="font-heading font-bold text-4xl md:text-5xl text-dark">
-                        Solicitar Orçamento
+                        {dict.title}
                     </h2>
                     <p className="text-gray-600 text-base md:text-lg mt-2">
-                        Envie-nos suas receitas (pode anexar várias) ou consulta e nossa equipe farmacêutica responderá.
+                        {dict.description}
                     </p>
                 </div>
 
@@ -76,7 +105,7 @@ export function BudgetForm() {
 
                         <div className="flex items-center gap-2 pb-2">
                             <ClipboardList className="text-primary" size={24} />
-                            <h3 className="font-heading font-bold text-2xl text-dark">Dados do pedido</h3>
+                            <h3 className="font-heading font-bold text-2xl text-dark">{dict.form.title}</h3>
                         </div>
 
                         <Form {...form}>
@@ -88,9 +117,9 @@ export function BudgetForm() {
                                         name="name"
                                         render={({ field }) => (
                                             <FormItem className="flex-1">
-                                                <FormLabel>Nome completo</FormLabel>
+                                                <FormLabel>{dict.form.name}</FormLabel>
                                                 <FormControl>
-                                                    <input placeholder="Seu nome" className="h-12 bg-gray-50 border-gray-200" {...field} />
+                                                    <input placeholder={dict.form.name_placeholder} className="h-12 bg-gray-50 border-gray-200" {...field} />
                                                 </FormControl>
                                                 <FormMessage className="text-red-500"/>
                                             </FormItem>
@@ -101,7 +130,7 @@ export function BudgetForm() {
                                         name="phone"
                                         render={({ field }) => (
                                             <FormItem className="flex-1">
-                                                <FormLabel>WhatsApp / Celular</FormLabel>
+                                                <FormLabel>{dict.form.phone}</FormLabel>
                                                 <FormControl>
                                                     <input placeholder="(00) 00000-0000" className="h-12 bg-gray-50 border-gray-200" {...field}/>
                                                 </FormControl>
@@ -115,9 +144,9 @@ export function BudgetForm() {
                                     name="email"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>E-mail</FormLabel>
+                                            <FormLabel>{dict.form.email}</FormLabel>
                                             <FormControl>
-                                                <input placeholder="seu@email.com" className="h-12 bg-gray-50 border-gray-200" {...field}/>
+                                                <input placeholder={dict.form.email_placeholder} className="h-12 bg-gray-50 border-gray-200" {...field}/>
                                             </FormControl>
                                             <FormMessage className="text-red-500"/>
                                         </FormItem>
@@ -125,14 +154,14 @@ export function BudgetForm() {
                                 />
 
                                 <div className="space-y-2">
-                                    <FormLabel>Anexar Receitas</FormLabel>
+                                    <FormLabel>{dict.form.upload_title}</FormLabel>
                                     <div className="h-[180px] w-full border-2 border-dashed border-gray-200 rounded-xl bg-gray-50 flex flex-col items-center justify-center gap-4 cursor-pointer hover:bg-gray-100 transition-colors">
                                         <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                                             <Upload className="text-primary" size={24} />
                                         </div>
                                         <div className="text-center">
-                                            <p className="font-semibold text-primary">Adicionar receitas médicas</p>
-                                            <p className="text-xs text-gray-500 mt-1">JPG, PNG ou PDF (Máx. 10MB)</p>
+                                            <p className="font-semibold text-primary">{dict.form.upload_desc}</p>
+                                            <p className="text-xs text-gray-500 mt-1">{dict.form.upload_info}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -142,10 +171,10 @@ export function BudgetForm() {
                                     name="message"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Observações</FormLabel>
+                                            <FormLabel>{dict.form.obs}</FormLabel>
                                             <FormControl>
                                                 <Textarea
-                                                    placeholder="Digite alguma observação sobre seu pedido..."
+                                                    placeholder={dict.form.obs_placeholder}
                                                     className="bg-gray-50 border-gray-200 min-h-[100px]"
                                                     {...field}
                                                 />
@@ -160,10 +189,10 @@ export function BudgetForm() {
                                     disabled={loading}
                                     className="h-12 md:h-14 w-full rounded-2xl bg-primary hover:bg-primary-dark text-white font-bold text-sm md:text-lg gap-2 md:gap-3 mt-2 uppercase transition-all"
                                 >
-                                    {loading ? "Enviando..." : (
+                                    {loading ? dict.form.sending : (
                                         <>
-                                            <span className="hidden md:inline">Solicitar Orçamento</span>
-                                            <span className="md:hidden">Solicitar</span>
+                                            <span className="hidden md:inline">{dict.form.submit}</span>
+                                            <span className="md:hidden">{dict.form.submit_short}</span>
                                             <Send size={20} />
                                         </>
                                     )}
@@ -180,7 +209,7 @@ export function BudgetForm() {
 
                         <div className="relative z-10 h-full flex flex-col justify-center items-center text-left">
                             <div className="w-full flex flex-col gap-8">
-                                <h3 className="font-heading font-bold text-4xl mb-2">Canais de Atendimento</h3>
+                                <h3 className="font-heading font-bold text-4xl mb-2">{dict.contact.title}</h3>
 
                                 <div className="flex flex-col gap-8 flex-1">
 
@@ -189,7 +218,7 @@ export function BudgetForm() {
                                             <MapPin className="text-primary" size={24} />
                                         </div>
                                         <div>
-                                            <p className="font-bold text-lg">Localização</p>
+                                            <p className="font-bold text-lg">{dict.contact.location}</p>
                                             <p className="text-gray-300 text-base">Rua Fictícia 123, Zona Central. Cidade Modelo, Estado.</p>
                                         </div>
                                     </div>
@@ -199,7 +228,7 @@ export function BudgetForm() {
                                             <Phone className="text-primary" size={24} />
                                         </div>
                                         <div>
-                                            <p className="font-bold text-lg">WhatsApp Central</p>
+                                            <p className="font-bold text-lg">{dict.contact.phone}</p>
                                             <p className="text-gray-300 text-base">+55 (71) 99999-9999</p>
                                         </div>
                                     </div>
@@ -209,7 +238,7 @@ export function BudgetForm() {
                                             <Mail className="text-primary" size={24} />
                                         </div>
                                         <div>
-                                            <p className="font-bold text-lg">Consultas técnicas</p>
+                                            <p className="font-bold text-lg">{dict.contact.email}</p>
                                             <p className="text-gray-300 text-base">contato@farmacia.com</p>
                                         </div>
                                     </div>
@@ -217,7 +246,7 @@ export function BudgetForm() {
 
                                 <div className="mt-8 bg-primary/10 border border-primary/20 rounded-3xl p-6 backdrop-blur-base">
                                     <p className="font-sans italic text-base text-green-200">
-                                        "Comprometidos com a ética farmacêutica e a saúde de nossos pacientes."
+                                        {dict.contact.footer_text}
                                     </p>
                                 </div>
                             </div>

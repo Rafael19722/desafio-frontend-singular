@@ -1,0 +1,135 @@
+{
+    "header": {
+        "budget": "SOLICITAR COTIZACIÓN",
+        "budget_short": "COTIZACIÓN"
+    },
+    "hero": {
+        "first_slide": {
+            "tag": "FARMACIA",
+            "title_1": "CALIDAD",
+            "title_2": "GARANTIZADA",
+            "description": "Insumos seleccionados y procesos rigurosos para su seguridad.",
+            "buttonText": "Contactar"
+        },
+        "second_slide": {
+            "tag": "FARMACIA",
+            "title_1": "FORMULACIONES",
+            "title_2": "ÚNICAS",
+            "description": "Creamos medicamentos personalizados adaptados a las necesidades de cada paciente.",
+            "buttonText": "Nuestros Servicios"
+        }
+    },
+    "about": {
+        "welcome": "Bienvenidos",
+        "title": "La salud como prioridad.",
+        "subtitle": "Nosotros",
+        "title_2": "Creemos en la búsqueda constante de la evolución.",
+        "description": "Tu deseo de crecer y desarrollarte es el motor que impulsa cada día. En Farmacia, estamos aquí para acompañarte en este viaje, para ayudarte a descubrir y desbloquear todo tu potencial.",
+        "values": {
+            "ethics": "Ética",
+            "science": "Ciencia",
+            "care": "Cuidado"
+        }
+    },
+    "process": {
+        "subtitle": "Nuestro Proceso",
+        "title": "Precisión en cada compuesto.",
+        "description": "Descubra cómo transformamos insumos de alta pureza en soluciones magistrales personalizadas. Nuestro laboratorio utiliza tecnología de vanguardia.",
+        "video_btn": "Ver Video Institucional",
+        "list": {
+            "item_1": "Materias primas certificadas",
+            "item_2": "Laboratorios de alta complejidad",
+            "item_3": "Control de calidad riguroso",
+            "item_4": "Prescripción personalizada"
+        }
+    },
+    "products": {
+        "subtitle": "Productos",
+        "title": "Los más pedidos.",
+        "view_all": "Ver todos los productos",
+        "product_1": {
+            "category": "Inmunidad",
+            "name": "Wellmunep",
+            "description": "Refuerzo inmunológico de alta absorción para el día a día."
+        },
+        "product_2": {
+            "category": "Digestión",
+            "name": "AdiDAO",
+            "description": "Enzima específica para la degradación eficiente de histamina."
+        },
+        "product_3": {
+            "category": "Enzimas",
+            "name": "Fórmulas Magistrales",
+            "description": "Su prescripción médica hecha realidad con precisión exacta."
+        },
+        "product_4": {
+            "category": "Personalizado",
+            "name": "Suplementos Deportivos",
+            "description": "Optimización del rendimiento físico personalizada."
+        }
+    },
+    "quotes": {
+        "quote_1": {
+            "text": "No hay belleza perfecta que no tenga alguna rareza en sus proporciones.",
+            "author": "FRANCIS BACON",
+            "role": "Filósofo"
+        },
+        "quote_2": {
+            "text": "La salud es el resultado no solo de nuestros actos, sino también de nuestros pensamientos.",
+            "author": "MAHATMA GANDHI",
+            "role": "Líder Pacifista"
+        },
+        "quote_3": {
+            "text": "El arte de la medicina consiste en entretener al paciente mientras la naturaleza cura la enfermedad.",
+            "author": "VOLTAIRE",
+            "role": "Escritor"
+        }
+    },
+    "budget": {
+        "subtitle": "Presupuesto Online",
+        "title": "Solicitar Cotización.",
+        "description": "Envíenos sus recetas (puede adjuntar varias) o consulta y nuestro equipo farmacéutico le responderá.",
+        "form": {
+            "title": "Datos del Pedido",
+            "name": "Nombre Completo",
+            "name_placeholder": "Su nombre",
+            "phone": "WhatsApp / Celular",
+            "email": "E-mail",
+            "email_placeholder": "su@email.com",
+            "upload_title": "Adjuntar Recetas",
+            "upload_desc": "Agregar recetas médicas",
+            "upload_info": "JPG, PNG o PDF (Máx. 10MB por archivo)",
+            "obs": "Observaciones",
+            "obs_placeholder": "Introduzca una observacion...",
+            "submit": "SOLICITAR COTIZACIÓN",
+            "submit_short": "SOLICITAR",
+            "sending": "Envío..."
+        },
+        "contact": {
+            "title": "Canales de Atención",
+            "location": "Ubicación",
+            "phone": "WhatsApp Central",
+            "email": "Consultas Técnicas",
+            "footer_text": "Comprometidos con la ética farmacéutica y la salud de nuestros pacientes."
+        },
+        "toast": {
+            "console": "Envío:",
+            "sucess": "Cotización solicitado!",
+            "description": "Nuestro equipo se pondrá en contacto contigo pronto."
+        }        
+    },
+    "footer": {
+        "description": "Excelencia en compuestos magistrales y cuidado personalizado de la salud desde hace más de 20 años.",
+        "links": {
+            "links_title": "Enlaces Rápidos",
+            "link_1": "Nuestro ADN",
+            "link_2": "Productos",
+            "link_3": "Pedidos",
+            "link_4": "Laboratorios"
+            
+        },
+        "copyright": "FARMÁCIA 2026 © Todos los derechos reservados.",
+        "privacy": "Políticas de Privacidad",
+        "terms": "Términos de Servicio"
+    }
+}

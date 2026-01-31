@@ -2,38 +2,65 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const PRODUCT_LIST = [
-    {
-        id: 1,
-        image: "/images/medicine-1.png",
-        category: "Imunidade",
-        name: "Wellmunep",
-        description: "Reforço imunológico de alta absorção para o dia a dia.",
+interface ProductsProps {
+    subtitle: string
+    title: string
+    view_all: string
+    product_1: {
+        category: string
+        name: string
+        description: string
     },
-    {
-        id: 2,
-        image: "/images/medicine-2.png",
-        category: "Digestão",
-        name: "AdiDAO",
-        description: "Enzima específica para a degradação eficiente de histamina."
+    product_2: {
+        category: string
+        name: string
+        description: string
     },
-    {
-        id: 3,
-        image: "/images/medicine-3.png",
-        category: "Enzimas",
-        name: "Fórmulas Magistrais",
-        description: "Sua prescrição médica tornada realidade com precisão exata.",
+    product_3: {
+        category: string
+        name: string
+        description: string
     },
-    {
-        id: 4,
-        image: "/images/medicine-2.png",
-        category: "Personalizado",
-        name: "Suplementos Esportivos",
-        description: "Otimização do rendimento físico personalizada.",
-    },
-];
+    product_4: {
+        category: string
+        name: string
+        description: string
+    }
+}
 
-export function Products() {
+export function Products({ dict }: ProductsProps) {
+
+    const PRODUCT_LIST = [
+        {
+            id: 1,
+            image: "/images/medicine-1.png",
+            category: dict.product_1.category,
+            name: dict.product_1.name,
+            description: dict.product_1.description,
+        },
+        {
+            id: 2,
+            image: "/images/medicine-2.png",
+            category: dict.product_2.category,
+            name: dict.product_2.name,
+            description: dict.product_2.description
+        },
+        {
+            id: 3,
+            image: "/images/medicine-3.png",
+            category: dict.product_3.category,
+            name: dict.product_3.name,
+            description: dict.product_3.description
+        },
+        {
+            id: 4,
+            image: "/images/medicine-2.png",
+            category: dict.product_4.category,
+            name: dict.product_4.name,
+            description: dict.product_4.description
+        },
+    ];
+
     return (
         <section className="bg-white py-24 w-full flex-col gap-12 overflow-hidden">
             
@@ -41,15 +68,15 @@ export function Products() {
                 
                 <div className="flex flex-col gap-2.5">
                     <span className="font-bold text-sm tracking-[0.1em] text-primary uppercase">
-                        Produtos
+                        {dict.subtitle}
                     </span>
                     <h2 className="font-heading font-bold text-4xl md:text-5xl text-dark leading-tight">
-                        Os mais pedidos
+                        {dict.title}
                     </h2>
                 </div>
 
                 <Button variant="ghost" className="group flex items-center gap-2 text-dark hover:text-primary transition-colors pb-2">
-                    <span className="font-semibold text-base">Ver todos os produtos</span>
+                    <span className="font-semibold text-base">{dict.view_all}</span>
                     <ArrowRight size={20} className="text-primary transition-transform group-hover:translate-x-1" />
                 </Button>
 

@@ -5,28 +5,27 @@ import { Quote } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-const TESTIMONIALS = [
-    {
-        id: 1,
-        text: "Não há beleza perfeita que não contenha alguma singularidade em suas proporções.",
-        author: "FRANCIS BACON",
-        role: "Filósofo",
-    },
-    {
-        id: 2,
-        text: "A saúde é o resultado não só de nossos atos como também de nossos pensamentos.",
-        author: "MAHATMA GANDHI",
-        role: "Líder Pacifista",
-    },
-    {
-        id: 3,
-        text: "A arte da medicina consiste em distrair o paciente enquanto a natureza cura a doença.",
-        author: "VOLTAIRE",
-        role: "Escritor",
-    },
-];
+interface QuotesProps {
+    dict: {
+        quote_1: {
+            text: string
+            author: string
+            role: string
+        },
+        quote_2: {
+            text: string
+            author: string
+            role: string
+        },
+        quote_3: {
+            text: string
+            author: string
+            role: string
+        }        
+    }
+}
 
-export function Quotes() {
+export function Quotes({ dict }: QuotesProps) {
     const [current, setCurrent] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
 
@@ -37,6 +36,27 @@ export function Quotes() {
         }, 5000);
         return () => clearInterval(timer);
     }, [current, isPaused]);
+
+    const TESTIMONIALS = [
+        {
+            id: 1,
+            text: dict.quote_1.text,
+            author: dict.quote_1.author,
+            role: dict.quote_1.role,
+        },
+        {
+            id: 2,
+            text: dict.quote_2.text,
+            author: dict.quote_2.author,
+            role: dict.quote_2.role,
+        },
+        {
+            id: 3,
+            text: dict.quote_3.text,
+            author: dict.quote_3.author,
+            role: dict.quote_3.role,
+        },
+    ];
 
     return (
         <section className="relative bg-gray-50 py-24 px-8 md:px-[120px] w-full overflow-hidden">
