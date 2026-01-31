@@ -158,11 +158,12 @@ export function BudgetForm() {
                                 <Button
                                     type="submit"
                                     disabled={loading}
-                                    className="h-14 w-full rounded-2xl bg-primary hover:bg-primary-dark text-white font-bold text-lg gap-3 mt-2 uppercase"
+                                    className="h-12 md:h-14 w-full rounded-2xl bg-primary hover:bg-primary-dark text-white font-bold text-sm md:text-lg gap-2 md:gap-3 mt-2 uppercase transition-all"
                                 >
                                     {loading ? "Enviando..." : (
                                         <>
-                                            Solicitar Orçamento
+                                            <span className="hidden md:inline">Solicitar Orçamento</span>
+                                            <span className="md:hidden">Solicitar</span>
                                             <Send size={20} />
                                         </>
                                     )}
