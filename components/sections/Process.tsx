@@ -24,7 +24,7 @@ export function Process({ dict }: ProcessProps) {
     ];
 
     return (
-        <section className="relative bg-dark py-24 px-8 md:px-[119.5px] w-full overflow-hidden z-0">
+        <section id="process" className="relative bg-dark py-24 px-8 md:px-[119.5px] w-full overflow-hidden z-0">
 
             <div className="absolute -right-20 top-120 -translate-y-1/2 w-96 h-96 bg-primary/20 rounded-full blur-[80px] -z-10" />
 

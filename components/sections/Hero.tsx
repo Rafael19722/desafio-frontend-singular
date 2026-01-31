@@ -6,6 +6,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
+import { handleScroll } from "@/lib/smooth-scroll";
+
 interface HeroProps {
   dict: {
     first_slide: {
@@ -127,7 +129,10 @@ export function Hero({ dict }: HeroProps) {
             </div>
 
             <div className="mb-[112px]">
-                <Button className="bg-primary hover:bg-primary-dark text-white font-bold text-base uppercase rounded-full px-8 py-4 transition-all shadow-lg hover:scale-105 h-14">
+                <Button 
+                  onClick={(e) => handleScroll(e, "budgetForm")}  
+                  className="bg-primary hover:bg-primary-dark text-white font-bold text-base uppercase rounded-full px-8 py-4 transition-all shadow-lg hover:scale-105 h-14"
+                >
                     {slide.buttonText}
                 </Button>
             </div>

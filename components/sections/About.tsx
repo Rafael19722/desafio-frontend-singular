@@ -33,7 +33,7 @@ export function About({ dict }: AboutProps) {
         },
     ];
     return (
-        <section className="bg-white py-24 px-8 md:px-[87.5px] w-full">
+        <section id="about" className="bg-white py-24 px-8 md:px-[87.5px] w-full">
             <div className="max-w-[1280px] mx-auto flex flex-col items-center gap-20">
                 <div className="w-full max-w-[768px] flex flex-col items-center text-center gap-[17.5px]">
                     <span className="font-bold text-sm tracking-[0.2em] text-primary uppercase">

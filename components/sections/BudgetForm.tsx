@@ -83,7 +83,7 @@ export function BudgetForm({ dict }: BudgetFormProps) {
     }
 
     return (
-        <section className="bg-white py-24 px-8 md:px[87.5px] w-full" id="orcamento">
+        <section id="budgetForm" className="bg-white py-24 px-8 md:px[87.5px] w-full">
             
             <div className="max-w-[1280px] mx-auto flex flex-col gap-16">
 
