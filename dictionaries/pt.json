@@ -99,6 +99,8 @@
             "upload_title": "Anexar Receitas",
             "upload_desc": "Adicionar receitas médicas",
             "upload_info": "JPG, PNG ou PDF (Máx. 10mb)",
+            "upload_change": "Clique para trocar os arquivos",
+            "upload_file": "Arquivos Selecionados",
             "obs": "Observações",
             "obs_placeholder": "Digite alguma observação...",
             "submit": "Solicitar Orçamento",

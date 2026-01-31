@@ -5,7 +5,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Upload, Send, MapPin, Phone, Mail, ClipboardList } from "lucide-react";
+import { Upload, X, FileText, Image as ImageIcon, Trash2, Send, MapPin, Phone, Mail, ClipboardList } from "lucide-react";
+import { motion, AnimatePresence} from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -33,6 +34,8 @@ interface BudgetFormProps {
         upload_title: string
         upload_desc: string
         upload_info: string
+        upload_change: string
+        upload_file: string
         obs: string
         obs_placeholder: string
         submit: string
@@ -82,6 +85,29 @@ export function BudgetForm({ dict }: BudgetFormProps) {
         }, 2000);
     }
 
+    const files = form.watch("files");
+
+    const formatBytes = (bytes: number, decimals = 2) => {
+        if (!+bytes) return '0 Bytes';
+        const k = 1024;
+        const dm = decimals < 0 ? 0 : decimals;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+    };
+
+    const removeFile = (indexToRemove: number) => {
+        const currentFiles = form.getValues("files");
+        if (!currentFiles) return;
+
+        const dt = new DataTransfer();
+        Array.from(currentFiles).forEach((file, i) => {
+            if (i !== indexToRemove) dt.items.add(file);
+        });
+
+        form.setValue("files", dt.files);
+    };
+
     return (
         <section id="budgetForm" className="bg-white py-24 px-8 md:px[87.5px] w-full">
             
@@ -119,7 +145,7 @@ export function BudgetForm({ dict }: BudgetFormProps) {
                                             <FormItem className="flex-1">
                                                 <FormLabel>{dict.form.name}</FormLabel>
                                                 <FormControl>
-                                                    <input placeholder={dict.form.name_placeholder} className="h-12 bg-gray-50 border-gray-200" {...field} />
+                                                    <input placeholder={dict.form.name_placeholder} className="h-12 px-4 bg-gray-50 border-gray-200" {...field} />
                                                 </FormControl>
                                                 <FormMessage className="text-red-500"/>
                                             </FormItem>
@@ -132,7 +158,7 @@ export function BudgetForm({ dict }: BudgetFormProps) {
                                             <FormItem className="flex-1">
                                                 <FormLabel>{dict.form.phone}</FormLabel>
                                                 <FormControl>
-                                                    <input placeholder="(00) 00000-0000" className="h-12 bg-gray-50 border-gray-200" {...field}/>
+                                                    <input placeholder="(00) 00000-0000" className="h-12 px-4 bg-gray-50 border-gray-200" {...field}/>
                                                 </FormControl>
                                                 <FormMessage className="text-red-500"/>
                                             </FormItem>
@@ -146,7 +172,7 @@ export function BudgetForm({ dict }: BudgetFormProps) {
                                         <FormItem>
                                             <FormLabel>{dict.form.email}</FormLabel>
                                             <FormControl>
-                                                <input placeholder={dict.form.email_placeholder} className="h-12 bg-gray-50 border-gray-200" {...field}/>
+                                                <input placeholder={dict.form.email_placeholder} className="h-12 px-4 bg-gray-50 border-gray-200" {...field}/>
                                             </FormControl>
                                             <FormMessage className="text-red-500"/>
                                         </FormItem>
@@ -155,15 +181,106 @@ export function BudgetForm({ dict }: BudgetFormProps) {
 
                                 <div className="space-y-2">
                                     <FormLabel>{dict.form.upload_title}</FormLabel>
-                                    <div className="h-[180px] w-full border-2 border-dashed border-gray-200 rounded-xl bg-gray-50 flex flex-col items-center justify-center gap-4 cursor-pointer hover:bg-gray-100 transition-colors">
-                                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                                            <Upload className="text-primary" size={24} />
+                                    <label 
+                                        className={`relative flex flex-col items-center justify-center w-full border-2 border-dashed rounded-xl cursor-pointer transition-all duration-300 group
+                                            ${files && files.length > 0
+                                                ? "h-32 border-primary/50 bg-primary/5"
+                                                : "h-[180px] border-gray-200 bg-gray-50 hover:bg-gray-100"
+                                        }`}
+                                    
+                                    >
+                                        <input 
+                                            type="file" 
+                                            className="hidden"
+                                            multiple
+                                            onChange={(e) => {
+                                                if(e.target.files && e.target.files.length > 0) {
+                                                    form.setValue("files", e.target.files);
+                                                }
+                                            }}
+                                        />
+                                        <div className="flex flex-col items-center justify-center pt-2 md:pt-5 pb-2 md:pb-6">
+                                            <div className={`transition-transform duration-300 ${files && files.length > 0 ? "scale-75" : "scale-100"}`}>
+                                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                                    <Upload className="text-primary" size={24} />
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="text-center">
-                                            <p className="font-semibold text-primary">{dict.form.upload_desc}</p>
-                                            <p className="text-xs text-gray-500 mt-1">{dict.form.upload_info}</p>
+                                        <div className="text-center px-2 md:px-4">
+                                            <p className="font-semibold text-primary">
+                                                {files && files.length > 0 ? dict.form.upload_change : dict.form.upload_desc}
+                                            </p>
+                                            {(!files || files.length === 0) && (
+                                                <p className="text-xs text-gray-500 mt-1">{dict.form.upload_info}</p>
+                                            )}
                                         </div>
-                                    </div>
+                                    </label>
+
+                                    <AnimatePresence>
+                                        {files && files.length > 0 && (
+                                            <motion.div
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: "auto"}}
+                                                exit={{ opacity: 0, height: 0 }}
+                                                className="space-y-2 overflow-hidden"
+                                            >
+                                                <div className="flex justify-between items-center px-1">
+                                                    <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                                        {dict.form.upload_file} ({files.length})
+                                                    </span>
+                                                    <Button
+                                                        type="button"
+                                                        onClick={() => form.setValue("files", null)}
+                                                        className="text-xs text-red-500 hover:text-red-700 flex items-center gap-1"
+                                                    >
+                                                        <Trash2 size={12} />
+                                                    </Button>
+                                                </div>
+
+                                                <div>
+                                                    {Array.from(files).map((file: any, index: number) => (
+                                                        <motion.div
+                                                            key={`${file.name}-${index}`}
+                                                            initial={{ opacity: 0, x: -20 }}
+                                                            animate={{ opacity: 1, x: 0 }}
+                                                            exit={{ opacity: 0, scale: 0.9 }}
+                                                            transition={{ delay: index * 0.1 }}
+                                                            className="flex items-center justify-between p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                                                        >
+                                                            <div className="flex items-center gap-3 overflow-hidden">
+                                                                <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
+                                                                    {file.type.startsWith("image/") ? (
+                                                                        <ImageIcon className="text-purple-500" size={20} />
+                                                                    ) : (
+                                                                        <FileText className="text-blue-500" size={20} />
+                                                                    )}
+                                                                </div>
+
+                                                                <div className="flex flex-col min-w-0">
+                                                                    <p className="text-sm font-medium text-gray-700 truncate max-w-[200px] sm:max-w-[300px]">
+                                                                        {file.name}
+                                                                    </p>
+                                                                    <p className="text-xs text-gray-400">
+                                                                        {formatBytes(file.size)}
+                                                                    </p>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <Button
+                                                                type="button"
+                                                                onClick={() => removeFile(index)}
+                                                                className="p2 hover:bg-red-200 rounded-full text-black hover:text-red-500 transition-colors"
+                                                                title="Remove file"
+                                                            >
+                                                                <X size={16} />
+                                                            </Button>
+                                                        </motion.div>
+                                                    ))}
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
 
                                 <FormField
