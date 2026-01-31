@@ -62,7 +62,7 @@ export function Products({ dict }: ProductsProps) {
     ];
 
     return (
-        <section className="bg-white py-24 w-full flex-col gap-12 overflow-hidden">
+        <section id="products" className="bg-white py-24 w-full flex-col gap-12 overflow-hidden">
             
             <div className="w-full max-w-[1280px] mx-auto mb-[48px] px-8 flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
                 

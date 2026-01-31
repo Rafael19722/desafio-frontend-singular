@@ -1,7 +1,13 @@
+"use client"
+
 import Link from "next/link";
 import { Instagram, Facebook, Twitter } from "lucide-react";
 
+import { handleScroll } from "@/lib/smooth-scroll";
+
+
 interface FooterProps {
+    lang: string,
     dict: {
         description: string
         links: {
@@ -18,9 +24,9 @@ interface FooterProps {
     }
 }
 
-export function Footer( { dict }: FooterProps) {
+export function Footer( { lang, dict }: FooterProps) {
     return (
-        <footer className="bg-gray-900 text-white pt-20 pb-10 px-8 md:px-[87.5px]">
+        <footer id="contact" className="bg-gray-900 text-white pt-20 pb-10 px-8 md:px-[87.5px]">
             
             <div className="max-w-[1280px] mx-auto px-8">
 
@@ -58,16 +64,32 @@ export function Footer( { dict }: FooterProps) {
 
                             <ul className="flex flex-col gap-4">
                                 <li>
-                                    <Link href="#" className="footer-link">{dict.links.link_1}</Link>
+                                    <Link 
+                                        href="#about" 
+                                        className="footer-link"
+                                        onClick={(e) => handleScroll(e, "about")}  
+                                    >{dict.links.link_1}</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="footer-link">{dict.links.link_2}</Link>
+                                    <Link 
+                                        href="#products" 
+                                        className="footer-link"
+                                        onClick={(e) => handleScroll(e, "products")}  
+                                        >{dict.links.link_2}</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="footer-link">{dict.links.link_3}</Link>
+                                    <Link 
+                                        href="#budgetForm"
+                                        className="footer-link"
+                                        onClick={(e) => handleScroll(e, "budgetForm")}  
+                                        >{dict.links.link_3}</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="footer-link">{dict.links.link_4}</Link>
+                                    <Link 
+                                        href="#process"
+                                        className="footer-link"
+                                        onClick={(e) => handleScroll(e, "process")}  
+                                    >{dict.links.link_4}</Link>
                                 </li>
                             </ul>
 

@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Globe, ClipboardList } from "lucide-react";
+import { handleScroll as handleScrollForm } from "@/lib/smooth-scroll";
+
 
 interface HeaderProps {
     lang: string
@@ -46,7 +48,10 @@ export function Header({ lang, dict}: HeaderProps) {
                             </Button>
                         </Link>
                     </div>
-                    <Button className="bg-primary hover:bg-primary-dark text-white font-semibold h-9 md:h-11 px-3 md:px-6 rounded-full transition-colors shadow-lg shadow-primary/30 gap-2 uppercase text-[12px] md:text-sm">
+                    <Button 
+                        onClick={(e) => handleScrollForm(e, "budgetForm")}  
+                        className="bg-primary hover:bg-primary-dark text-white font-semibold h-9 md:h-11 px-3 md:px-6 rounded-full transition-colors shadow-lg shadow-primary/30 gap-2 uppercase text-[12px] md:text-sm"
+                    >
                         <ClipboardList className="w-4 h-4 md:w-5 md:h-5" />
                         <span className="hidden md:inline">{dict.budget}</span>
                         <span className="md:hidden">{dict.budget_short}</span>
