@@ -19,7 +19,8 @@ interface HeroProps {
     },
     second_slide: {
         tag: string
-        title: string
+        title_1: string
+        title_2: string
         description: string
         buttonText: string
     }
