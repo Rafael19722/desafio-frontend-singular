@@ -37,7 +37,7 @@ export function Products() {
     return (
         <section className="bg-white py-24 w-full flex-col gap-12 overflow-hidden">
             
-            <div className="w-full max-w-[1280px] mx-auto mb-[48px] px-8 flex flex-col md:flex-row items-end justify-between gap-8">
+            <div className="w-full max-w-[1280px] mx-auto mb-[48px] px-8 flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
                 
                 <div className="flex flex-col gap-2.5">
                     <span className="font-bold text-sm tracking-[0.1em] text-primary uppercase">
