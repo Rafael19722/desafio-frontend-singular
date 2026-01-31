@@ -104,15 +104,15 @@ export function BudgetForm({ dict }: BudgetFormProps) {
     };
 
     const removeFile = (indexToRemove: number) => {
-        const currentFiles = form.getValues("files");
+        const currentFiles = form.getValues("files") as FileList | null;
         if (!currentFiles) return;
 
         const dt = new DataTransfer();
-        Array.from(currentFiles).forEach((file, i) => {
+        Array.from(currentFiles).forEach((file: File, i) => {
             if (i !== indexToRemove) dt.items.add(file);
         });
 
-        form.setValue("files", dt.files);
+        form.setValue("files", dt.items.length > 0 ? dt.files : null);
     };
 
     return (
