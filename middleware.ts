@@ -2,21 +2,10 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const locales = ["pt", "es"];
-const default = "pt";
+const defaultLocale = "pt";
 
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
-
-    if (
-        pathname.startsWith("/_next") ||
-        pathname.startsWith("/api") ||
-        pathname.startsWith("/images") ||
-        pathname.startsWith("/icons") ||
-        pathname.startsWith(".")
-
-    ) {
-        return;
-    }
 
     const pathnameHasLocale = locales.some(
         (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
@@ -25,11 +14,13 @@ export function middleware(request: NextRequest) {
     if (pathnameHasLocale) return;
 
     const locale = defaultLocale;
-    request.nextUrl.pathname = `/${locale}${pathname}`;
 
-    return NextResponse.redirect(request.nextUrl);
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}${pathname}`;
+
+    return NextResponse.redirect(url);
 }
 
 export const config = {
-    matcher: ["/((?!_next).*)"],
+    matcher: ["/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)"],
 };
