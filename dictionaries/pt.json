@@ -67,7 +67,7 @@
             "description": "Otimização do rendimento físico personalizada."
         }
     },
-    "Quotes": {
+    "quotes": {
         "quote_1": {
             "text": "Não há beleza perfeita que não contenha alguma singularidade em suas proporções.",
             "author": "FRANCIS BACON",
