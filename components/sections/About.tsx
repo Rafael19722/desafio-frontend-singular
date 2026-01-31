@@ -2,49 +2,61 @@
 
 import { Scale, FlaskConical, HeartHandshake } from "lucide-react"
 
-const VALUES = [
-    {
-        icon: Scale,
-        label: "Ética",
-    },
-    {
-        icon: FlaskConical,
-        label: "Ciência",
-    },
-    {
-        icon: HeartHandshake,
-        label: "Cuidado",
-    },
-];
+interface AboutProps {
+    dict: {
+        welcome: string
+        title: string
+        subtitle: string
+        title_2: string
+        description: string
+        values: {
+            ethics: string
+            science: string
+            care: string
+        }
+    }
+}
 
-export function About() {
+export function About({ dict }: AboutProps) {
+    const VALUES = [
+        {
+            icon: Scale,
+            label: dict.values.ethics,
+        },
+        {
+            icon: FlaskConical,
+            label: dict.values.science,
+        },
+        {
+            icon: HeartHandshake,
+            label: dict.values.care,
+        },
+    ];
     return (
         <section className="bg-white py-24 px-8 md:px-[87.5px] w-full">
             <div className="max-w-[1280px] mx-auto flex flex-col items-center gap-20">
                 <div className="w-full max-w-[768px] flex flex-col items-center text-center gap-[17.5px]">
                     <span className="font-bold text-sm tracking-[0.2em] text-primary uppercase">
-                        Bem vindos
+                        {dict.welcome}
                     </span>
 
                     <h2 className="font-heading font-bold text-4xl md:text-5xl text-dark">
-                        A saúde como prioridade.
+                        {dict.title}
                     </h2>
                     
                     <div className="w-20 h-1 bg-primary mt-2"/>
                 </div>
                 <div className="w-full max-w-[896px] flex flex-col items-center text-center gap-2.5">
                     <span className="font-bold text-sm tracking-[0.1em] text-primary uppercase">
-                        Sobre nós
+                        {dict.subtitle}
                     </span>
 
                     <h3 className="font-heading font-bold text-[30px] leading-9 text-dark uppercase">
-                        Acreditamos na busca constante pela evolução.
+                        {dict.title_2}
                     </h3>
 
                     <p className="font-sans font-normal text-lg leading-[29.25px] text-gray-600 text-center mt-2">
-                        Seu desejo de crescer e desenvolver-se é o motor que nos impulsiona. 
-                        Na Farmácia, estamos aqui para acompanhá-lo nesta jornada, para ajudá-lo 
-                        a descobrir todo o seu potencial.
+                        {dict.description}
                     </p>
 
                     <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8 pt-[38.5px]">
