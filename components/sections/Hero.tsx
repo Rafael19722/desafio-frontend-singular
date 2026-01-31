@@ -106,7 +106,7 @@ export function Hero({ dict }: HeroProps) {
             initial={{ opacity: 0, x: -50 }} 
             animate={{ opacity: 1, x: 0 }}   
             transition={{ duration: 0.5, delay: 0.2 }} 
-            className="flex flex-col items-start"
+            className="flex flex-col items-start w-full"
           >
             <div className="pb-4">
                 <span className="font-heading font-bold text-primary tracking-widest uppercase">
@@ -114,13 +114,13 @@ export function Hero({ dict }: HeroProps) {
                 </span>
             </div>
 
-            <div className="max-w-[768px] pb-6">
-                <h1 className="font-heading font-bold text-5xl md:text-7xl text-white leading-tight">
+            <div className="md:max-w-[768px] pb-6">
+                <h1 className="font-heading font-bold text-4xl sm:w-4xl md:text-7xl text-white leading-tight">
                     {slide.title}
                 </h1>
             </div>
 
-            <div className="max-w-[576px] pb-10">
+            <div className="max-w-[576px] pb-10 mt-14 md:mt-0">
                 <p className="text-gray-200 text-lg md:text-2xl font-normal leading-relaxed">
                     {slide.description}
                 </p>
