@@ -3,28 +3,30 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ProductsProps {
-    subtitle: string
-    title: string
-    view_all: string
-    product_1: {
-        category: string
-        name: string
-        description: string
-    },
-    product_2: {
-        category: string
-        name: string
-        description: string
-    },
-    product_3: {
-        category: string
-        name: string
-        description: string
-    },
-    product_4: {
-        category: string
-        name: string
-        description: string
+    dict: {
+        subtitle: string
+        title: string
+        view_all: string
+        product_1: {
+            category: string
+            name: string
+            description: string
+        },
+        product_2: {
+            category: string
+            name: string
+            description: string
+        },
+        product_3: {
+            category: string
+            name: string
+            description: string
+        },
+        product_4: {
+            category: string
+            name: string
+            description: string
+        }
     }
 }
 
