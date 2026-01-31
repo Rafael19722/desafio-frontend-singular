@@ -47,7 +47,7 @@ export function About() {
                         a descobrir todo o seu potencial.
                     </p>
 
-                    <div className="w-full flex justify-center gap-8 pt-[38.5px]">
+                    <div className="w-full flex flex-col md:flex-row justify-center items-center gap-8 pt-[38.5px]">
                         {VALUES.map((item, index) => (
                             <div
                                 key={index}

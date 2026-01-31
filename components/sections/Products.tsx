@@ -65,7 +65,7 @@ export function Products() {
                         >
                             <div className="relative w-full h-[450px] bg-gray-200 overflow-hidden">
                                 <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                                    <Image src={product.image} alt="Remédios mais vendidos" fill className="object-cover" />
+                                    <Image src={product.image} alt="Remédios mais vendidos" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"/>
                                 </div>
                             </div>
                             <div className="h-[185px] p-8 pt-[37px] flex flex-col gap-2.5">
