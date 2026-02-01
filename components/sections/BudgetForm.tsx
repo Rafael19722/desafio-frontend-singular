@@ -83,7 +83,7 @@ export function BudgetForm({ dict }: BudgetFormProps) {
         email: z.string().email(dict.warnings.email),
         message: z.string().optional(),
         files: z
-            .custom<FileList>()
+            .custom<FileList | null>()
             .refine((files) => files instanceof FileList && files.length > 0, {
                 message: dict.warnings.file_miss
             })
@@ -145,7 +145,7 @@ export function BudgetForm({ dict }: BudgetFormProps) {
             if (i !== indexToRemove) dt.items.add(file);
         });
 
-        form.setValue("files", dt.items.length > 0 ? dt.files : null);
+        form.setValue("files", (dt.items.length > 0 ? dt.files : null) as any);
     };
 
     return (
