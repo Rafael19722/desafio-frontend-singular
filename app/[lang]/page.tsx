@@ -11,6 +11,8 @@ import { Quotes } from "@/components/sections/Quotes";
 import { BudgetForm } from "@/components/sections/BudgetForm";
 import { Footer } from "@/components/Footer";
 
+import { FadeInScroll } from "@/components/ui/fade-in-scroll";
+
 export default async function Home( {
   params,
 }: {
@@ -24,11 +26,23 @@ export default async function Home( {
     <main >
       <Header lang={lang} dict={dict.header}/>
       <Hero dict={dict.hero}/>
-      <About dict={dict.about}/>
-      <Process dict={dict.process}/>
-      <Products dict={dict.products}/>
-      <Quotes dict={dict.quotes}/>
-      <BudgetForm dict={dict.budget}/>
+      
+      <FadeInScroll>
+        <About dict={dict.about}/>
+      </FadeInScroll>
+      <FadeInScroll>
+        <Process dict={dict.process}/>
+      </FadeInScroll>
+      <FadeInScroll>
+        <Products dict={dict.products}/>
+      </FadeInScroll>
+      <FadeInScroll>
+        <Quotes dict={dict.quotes}/>
+      </FadeInScroll>
+      <FadeInScroll>
+        <BudgetForm dict={dict.budget}/>
+      </FadeInScroll>
+
       <Footer lang={lang} dict={dict.footer}/>
     </main>
   );
