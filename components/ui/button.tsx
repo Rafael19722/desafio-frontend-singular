@@ -19,7 +19,7 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
-        heroArrow: "rounded-full bg-transparent text-white/50 hover:text-white hover:bg-white/10 p-0",
+        heroArrow: "rounded-full bg-transparent text-white/50 [@media(hover:hover)]:hover:text-white [@media(hover:hover)]:hover:bg-white/10 active:text-white active:bg-white/10 p-0 transition-colors",
         pagination: "p-0 h-auto w-auto bg-transparent hover:bg-transparent min-w-0 min-h-0",
       },
       size: {
