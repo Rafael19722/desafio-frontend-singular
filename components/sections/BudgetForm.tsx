@@ -85,7 +85,7 @@ export function BudgetForm({ dict }: BudgetFormProps) {
 
         setTimeout(() => {
             setLoading(false);
-            toast.success(dict.toast.sucess, {
+            toast.success(dict.toast.sucess, {position: "top-center"}, {
                 description: dict.toast.description,
             });
             form.reset();

@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.variable} ${montserrat.variable} antialiased`}>
-        <Toaster />
+        <Toaster richColors/>
         {children}
       </body>
     </html>
