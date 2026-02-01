@@ -7,36 +7,13 @@ import { Button } from "@/components/ui/button";
 
 interface QuotesProps {
     dict: {
-        quote_1: {
-            text: string
-            author: string
-            role: string
-        },
-        quote_2: {
-            text: string
-            author: string
-            role: string
-        },
-        quote_3: {
-            text: string
-            author: string
-            role: string
-        }        
+        quote_1: { text: string; author: string; role: string },
+        quote_2: { text: string; author: string; role: string },
+        quote_3: { text: string; author: string; role: string }        
     }
 }
 
 export function Quotes({ dict }: QuotesProps) {
-    const [current, setCurrent] = useState(0);
-    const [isPaused, setIsPaused] = useState(false);
-
-    useEffect(() => {
-        if (isPaused) return;
-        const timer = setInterval(() => {
-            setCurrent((prev) => (prev + 1) % TESTIMONIALS.length);
-        }, 5000);
-        return () => clearInterval(timer);
-    }, [current, isPaused]);
-
     const TESTIMONIALS = [
         {
             id: 1,
@@ -57,6 +34,17 @@ export function Quotes({ dict }: QuotesProps) {
             role: dict.quote_3.role,
         },
     ];
+
+    const [current, setCurrent] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+
+    useEffect(() => {
+        if (isPaused) return;
+        const timer = setInterval(() => {
+            setCurrent((prev) => (prev + 1) % TESTIMONIALS.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [current, isPaused]);
 
     return (
         <section className="relative bg-gray-50 py-24 px-8 md:px-[120px] w-full overflow-hidden">
@@ -80,11 +68,12 @@ export function Quotes({ dict }: QuotesProps) {
                 <div className="w-full min-h-[300px] flex items-center justify-center mb-8">
                     <AnimatePresence mode="wait">
                         <motion.div
-                            key={current}
+                            key={TESTIMONIALS[current].id}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.5 }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                            style={{ willChange: "opacity, transform" }}
                             className="flex flex-col items-center justify-center text-center px-4"
                         >
                             <p className="font-sans font-light italic text-xl md:text-3xl lg:text-4xl leading-relaxed text-dark max-w-3xl">
