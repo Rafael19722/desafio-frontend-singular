@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,30 +10,18 @@ interface ProductsProps {
         subtitle: string
         title: string
         view_all: string
-        product_1: {
-            category: string
-            name: string
-            description: string
-        },
-        product_2: {
-            category: string
-            name: string
-            description: string
-        },
-        product_3: {
-            category: string
-            name: string
-            description: string
-        },
-        product_4: {
-            category: string
-            name: string
-            description: string
-        }
+        product_1: { category: string; name: string; description: string },
+        product_2: { category: string; name: string; description: string },
+        product_3: { category: string; name: string; description: string },
+        product_4: { category: string; name: string; description: string }
     }
 }
 
 export function Products({ dict }: ProductsProps) {
+    const sliderRef = useRef<HTMLDivElement>(null);
+    const [isDown, setIsDown] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
 
     const PRODUCT_LIST = [
         {
@@ -61,7 +52,37 @@ export function Products({ dict }: ProductsProps) {
             name: dict.product_4.name,
             description: dict.product_4.description
         },
+        {
+            id: 5,
+            image: "/images/medicine-1.png",
+            category: dict.product_1.category,
+            name: dict.product_1.name,
+            description: dict.product_1.description,
+        },
     ];
+
+    const handleMouseDown = (e: React.MouseEvent) => {
+        if (!sliderRef.current) return;
+        setIsDown(true);
+        setStartX(e.pageX - sliderRef.current.offsetLeft);
+        setScrollLeft(sliderRef.current.scrollLeft);
+    };
+
+    const handleMouseLeave = () => {
+        setIsDown(false);
+    };
+
+    const handleMouseUp = () => {
+        setIsDown(false);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!isDown || !sliderRef.current) return;
+        e.preventDefault();
+        const x = e.pageX - sliderRef.current.offsetLeft;
+        const walk = (x - startX) * 2;
+        sliderRef.current.scrollLeft = scrollLeft - walk;
+    };
 
     return (
         <section id="products" className="bg-white py-24 w-full flex-col gap-12 overflow-hidden">
@@ -84,17 +105,30 @@ export function Products({ dict }: ProductsProps) {
 
             </div>
 
-            <div className="w-full overflow-x-auto pb-8 hide-scrollbar">
+            <div 
+                ref={sliderRef}
+                className="w-full overflow-x-auto pb-8 hide-scrollbar cursor-grab active:cursor-grabbing select-none"
+                onMouseDown={handleMouseDown}
+                onMouseLeave={handleMouseLeave}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+            >
                 
                 <div className="flex gap-8 w-max px-8 md:px-[72.75px]">
                     {PRODUCT_LIST.map((product) => (
                         <div 
                             key={product.id}
-                            className="w-[320px] md:w-[400px] h-[635px] shrink-0 rounded-[40px] overflow-hidden bg-gray-50 hover:shadow-xl transition-shadow duration-300 group cursor-pointer border border-transparent hover:border-gray-100"
+                            className="w-[320px] md:w-[400px] h-[635px] shrink-0 rounded-[40px] overflow-hidden bg-gray-50 hover:shadow-xl transition-shadow duration-300 group border border-transparent hover:border-gray-100"
                         >
                             <div className="relative w-full h-[450px] bg-gray-200 overflow-hidden">
                                 <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                                    <Image src={product.image} alt="Remédios mais vendidos" fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"/>
+                                    <Image 
+                                        src={product.image} 
+                                        alt="Remédios mais vendidos" 
+                                        fill 
+                                        className="object-cover pointer-events-none" 
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                                    />
                                 </div>
                             </div>
                             <div className="h-[185px] p-8 pt-[37px] flex flex-col gap-2.5">
