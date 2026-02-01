@@ -118,6 +118,14 @@
             "console": "Envío:",
             "sucess": "Cotización solicitado!",
             "description": "Nuestro equipo se pondrá en contacto contigo pronto."
+        },
+        "warnings": {
+            "name": "El nombre debe tener menos de 2 caracteres.",
+            "phone": "Número de teléfono inválido.",
+            "email": "Email no valido.",
+            "file_miss": "Adjunte al menos una receta o fotografía.",
+            "file_size": "Cada archivo debe tener un máximo de 5 MB.",
+            "file_type": "Sólo se aceptan los formatos .jpg, .png, .webp y .pdf.."
         }        
     },
     "footer": {

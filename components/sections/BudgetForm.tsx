@@ -54,19 +54,52 @@ interface BudgetFormProps {
             console: string
             sucess: string
             description: string         
+        },
+        warnings: {
+            name: string
+            phone: string
+            email: string
+            file_miss: string
+            file_size: string
+            file_type: string            
         }
     }
 }
 
-const formSchema = z.object({
-    name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres."),
-    phone: z.string().min(10, "Telefone inválido."),
-    email: z.string().email("E-mail inválido."),
-    message: z.string().optional(),
-    files: z.any().optional(),
-});
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+const ACCEPTED_IMAGE_TYPES = [
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "image/webp",
+    "application/pdf"
+];
 
 export function BudgetForm({ dict }: BudgetFormProps) {
+
+    const formSchema = z.object({
+        name: z.string().min(2, dict.warnings.name),
+        phone: z.string().min(10, dict.warnings.phone),
+        email: z.string().email(dict.warnings.email),
+        message: z.string().optional(),
+        files: z
+            .custom<FileList>()
+            .refine((files) => files instanceof FileList && files.length > 0, {
+                message: dict.warnings.file_miss
+            })
+            .refine((files) => {
+                if (!files) return false;
+                return Array.from(files).every((file) => file.size <= MAX_FILE_SIZE);
+            }, {
+                message: dict.warnings.file_size
+            })
+            .refine((files) => {
+                if (!files) return false;
+                return Array.from(files).every((file) => ACCEPTED_IMAGE_TYPES.includes(file.type));
+            }, {
+                message: dict.warnings.file_type
+            }),
+    });
     const [loading, setLoading] = useState(false);
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -187,41 +220,55 @@ export function BudgetForm({ dict }: BudgetFormProps) {
                                 />
 
                                 <div className="space-y-2">
-                                    <FormLabel>{dict.form.upload_title}</FormLabel>
-                                    <label 
-                                        className={`relative flex flex-col items-center justify-center w-full border-2 border-dashed rounded-xl cursor-pointer transition-all duration-300 group
-                                            ${files && files.length > 0
-                                                ? "h-32 border-primary/50 bg-primary/5"
-                                                : "h-[180px] border-gray-200 bg-gray-50 hover:bg-gray-100"
-                                        }`}
-                                    
-                                    >
-                                        <input 
-                                            type="file" 
-                                            className="hidden"
-                                            multiple
-                                            onChange={(e) => {
-                                                if(e.target.files && e.target.files.length > 0) {
-                                                    form.setValue("files", e.target.files);
-                                                }
-                                            }}
-                                        />
-                                        <div className="flex flex-col items-center justify-center pt-2 md:pt-5 pb-2 md:pb-6">
-                                            <div className={`transition-transform duration-300 ${files && files.length > 0 ? "scale-75" : "scale-100"}`}>
-                                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                                    <Upload className="text-primary" size={24} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="text-center px-2 md:px-4">
-                                            <p className="font-semibold text-primary">
-                                                {files && files.length > 0 ? dict.form.upload_change : dict.form.upload_desc}
-                                            </p>
-                                            {(!files || files.length === 0) && (
-                                                <p className="text-xs text-gray-500 mt-1">{dict.form.upload_info}</p>
-                                            )}
-                                        </div>
-                                    </label>
+                                    <FormField
+                                        control={form.control}
+                                        name="files"
+                                        render={({ field: { value, onChange, ...fieldProps } }) => (
+                                            <FormItem>
+                                                <FormLabel>{dict.form.upload_title}</FormLabel>
+
+                                                <FormControl>
+                                                    <label 
+                                                        className={`relative flex flex-col items-center justify-center w-full border-2 border-dashed rounded-xl cursor-pointer transition-all duration-300 group
+                                                            ${files && files.length > 0
+                                                                ? "h-32 border-primary/50 bg-primary/5"
+                                                                : "h-[180px] border-gray-200 bg-gray-50 hover:bg-gray-100"
+                                                        }`}
+                                                    
+                                                    >
+                                                        <input 
+                                                            type="file" 
+                                                            className="hidden"
+                                                            multiple
+                                                            accept=".jpg,.jpeg,.png,.webp,.pdf"
+                                                            onChange={(e) => {
+                                                                if(e.target.files && e.target.files.length > 0) {
+                                                                    onChange(e.target.files);
+                                                                }
+                                                            }}
+                                                            value={undefined}
+                                                        />
+                                                        <div className="flex flex-col items-center justify-center pt-2 md:pt-5 pb-2 md:pb-6">
+                                                            <div className={`transition-transform duration-300 ${files && files.length > 0 ? "scale-75" : "scale-100"}`}>
+                                                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                                                    <Upload className="text-primary" size={24} />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-center px-2 md:px-4">
+                                                            <p className="font-semibold text-primary">
+                                                                {files && files.length > 0 ? dict.form.upload_change : dict.form.upload_desc}
+                                                            </p>
+                                                            {(!files || files.length === 0) && (
+                                                                <p className="text-xs text-gray-500 mt-1">{dict.form.upload_info}</p>
+                                                            )}
+                                                        </div>
+                                                    </label>
+                                                </FormControl>
+                                                <FormMessage className="text-red-500 text-sm mt-2" />
+                                            </FormItem>
+                                        )}
+                                    />
 
                                     <AnimatePresence>
                                         {files && files.length > 0 && (
