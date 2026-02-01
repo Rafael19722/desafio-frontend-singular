@@ -61,7 +61,7 @@ src/
 ## Mocking e Simulação
 Como o backend estava fora do escopo, simulei o comportamento de uma API real:
 
-- **Upload de Arquivos:** Intervace visual de Drag & Drop simulada.
+- **Upload de Arquivos:** Interface visual de Drag & Drop simulada.
 - **Envio de Orçamentos:** Uso de setTimeout para simular latência de rede, com feedback de "Loading" e Toast de Sucesso/Erro ao final.
 
 ## Como Rodar Localmente
@@ -86,5 +86,5 @@ npm run dev
 ## Autor
 **Rafael Silva Rangel de Almeida**
 - Fullstack Developer & Estudante de Ciência da Computação
-- [https://www.linkedin.com/in/rafael-rangel1/](LinkedIn)
-- [https://rafaelrangel.vercel.app/](Portfólio)
+- [LinkedIn](https://www.linkedin.com/in/rafael-rangel1/)
+- [Portifólio](https://rafaelrangel.vercel.app/)
