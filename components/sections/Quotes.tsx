@@ -68,12 +68,11 @@ export function Quotes({ dict }: QuotesProps) {
                 <div className="w-full min-h-[300px] flex items-center justify-center mb-8">
                     <AnimatePresence mode="wait">
                         <motion.div
-                            key={TESTIMONIALS[current].id}
+                            key={current}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.5, ease: "easeOut" }}
-                            style={{ willChange: "opacity, transform" }}
+                            transition={{ duration: 0.5 }}
                             className="flex flex-col items-center justify-center text-center px-4"
                         >
                             <p className="font-sans font-light italic text-xl md:text-3xl lg:text-4xl leading-relaxed text-dark max-w-3xl">
