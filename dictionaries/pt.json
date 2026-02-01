@@ -118,6 +118,14 @@
             "console": "Enviando:",
             "sucess": "Orçamento solicitado!",
             "description": "Nossa equipe entrará em contato em breve."
+        },
+        "warnings": {
+            "name": "Nome deve ter pelo menos 2 caracteres.",
+            "phone": "Telefone inválido.",
+            "email": "E-mail inválido.",
+            "file_miss": "Por favor, anexe pelo menos uma receita ou foto.",
+            "file_size": "Cada arquivo deve ter no máximo 5MB.",
+            "file_type": "Apenas formatos .jpg, .png, .webp e .pdf são aceitos."
         }
     },
     "footer": {
